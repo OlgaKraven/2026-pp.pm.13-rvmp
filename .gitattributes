@@ -1,6 +1,7 @@
 forms/** -text
 materials/** -text
 scripts/assets/fonts/** -text
+scripts/assets/fonts/OFL.txt whitespace=-blank-at-eol
 *.pdf binary
 *.docx binary
 *.png binary

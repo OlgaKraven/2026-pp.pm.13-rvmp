@@ -57,7 +57,7 @@ def main():
             if any(x in rel.parts for x in ['Library','Temp','Logs','obj','UserSettings','Build','.vs','_Recovery','Documentation']):continue
             if 'Editor' in rel.parts and rel.name not in ['ReleaseAssets.cs','ReleaseAssets.cs.meta']:continue
             data=path.read_bytes()
-            if path.suffix.lower() in ['.cs','.meta','.asset','.unity','.json','.txt','.md'] or path.name=='.gitignore':data=data.replace(b'\r\n',b'\n')
+            if path.suffix.lower() in ['.cs','.meta','.asset','.unity','.json','.txt','.md','.html','.css','.svg'] or path.name=='.gitignore':data=data.replace(b'\r\n',b'\n')
             info=zipfile.ZipInfo('CrystalRoute/'+rel.as_posix(),(2026,11,5,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED
             info.create_system=3;info.external_attr=0o100644<<16
             z.writestr(info,data)
@@ -66,7 +66,7 @@ def main():
     materials=ROOT/'materials';materials.mkdir(exist_ok=True)
     if args.render_pdf:
         pdf(ROOT,materials/'assignment.pdf',d,'assignment',True);pdf(ROOT,materials/'guide.pdf',d,'guide',True)
-        (materials/'source-sha256.json').write_text(json.dumps({'source':source_digest,'files':{n:hashlib.sha256((materials/n).read_bytes()).hexdigest() for n in ['assignment.pdf','guide.pdf']}},indent=2)+'\n')
+        (materials/'source-sha256.json').write_text(json.dumps({'source':source_digest,'files':{n:hashlib.sha256((materials/n).read_bytes()).hexdigest() for n in ['assignment.pdf','guide.pdf']}},indent=2)+'\n',newline='\n')
     pinned=json.loads((materials/'source-sha256.json').read_text())
     if pinned['source']!=source_digest:raise ValueError('Content changed: render PDFs and review before publishing')
     for name,digest in pinned['files'].items():
