@@ -1,0 +1,11 @@
+forms/** -text
+materials/** -text
+scripts/assets/fonts/** -text
+*.pdf binary
+*.docx binary
+*.png binary
+*.jpg binary
+*.zip binary
+*.ttf binary
+scripts/*.py text eol=lf
+content/course.json text eol=lf

@@ -14,7 +14,7 @@ public class AboutPanel : MonoBehaviour
             "Три маршрута: соберите кристаллы и найдите портал.\n" +
             "Графика и звуки создаются кодом примера.\n" +
             "Unity UI; шрифт LegacyRuntime из Unity.\n" +
-            "Источники перечислены в Documentation/CREDITS.md.",
+            "Источники перечислены в Release/CREDITS.md.",
             0, 20, 900, 300, 25);
         ui.Button(panel.transform, "AboutBack", "Назад", 0, -215,
             420, 65, () => panel.SetActive(false));
